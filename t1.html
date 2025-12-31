@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Student Details</title>
+</head>
+<body>
+
+  <h2>All Student Names</h2>
+  <ul id="nameList"></ul>
+
+  <script>
+    const students = [
+      { id: 1, name: "Amit", marks: 78, department: "CSE" },
+      { id: 2, name: "Priya", marks: 92, department: "ECE" },
+      { id: 3, name: "Rahul", marks: 45, department: "MECH" },
+      { id: 4, name: "Sneha", marks: 66, department: "CSE" },
+      { id: 5, name: "Kiran", marks: 88, department: "ECE" }
+    ];
+
+    for (let i = 0; i < students.length; i++) {
+      let li = document.createElement("li");
+      li.innerText = students[i].name;
+      document.getElementById("nameList").appendChild(li);
+    }
+
+  </script>
+
+</body>
+</html>
