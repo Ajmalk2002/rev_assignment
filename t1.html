@@ -26,13 +26,22 @@
                 <th>Name</th>
                 <th>Marks</th>
                 <th>Department</th>
-                
+
             </tr>
         </thead>
         <tbody id="tableBody">
 
         </tbody>
     </table>
+
+    <h2>Average Marks</h2>
+    <p id="avrgMark"></p>
+
+    <h2>Only CSE Students</h2>
+    <ul id="onlyCSE"></ul>
+
+    <h2>Sort in Descending</h2>
+    <ul id="sortArray"></ul>
 
 
     <script>
@@ -97,7 +106,54 @@
 
         //display in table format
 
+        var tBody = document.getElementById("tableBody")
+        tBody.innerHTML = ""
 
+        for (let i = 0; i < students.length; i++) {
+            let row = tBody.insertRow();
+
+            let nameCell = row.insertCell(0)
+            let markCell = row.insertCell(1)
+            let deptCell = row.insertCell(2)
+
+            nameCell.innerHTML = students[i].name
+            markCell.innerHTML = students[i].marks
+            deptCell.innerHTML = students[i].department
+        }
+
+        //average of marks
+
+        var sum = 0
+
+        for (let i = 0; i < students.length; i++) {
+            sum = sum + students[i].marks
+
+        }
+
+        var avg = sum / students.length
+
+        document.getElementById("avrgMark").innerHTML = "Total average marks = " + avg
+
+
+        //to display only cse students
+        for (let i = 0; i < students.length; i++) {
+            if (students[i].department == "CSE") {
+                let li = document.createElement("li");
+                li.innerText = students[i].name + " - " + students[i].department;
+                document.getElementById("onlyCSE").appendChild(li);
+            }
+        }
+
+        //to sort by marks
+        var sortedStudent = [...students]
+        sortedStudent.sort((a, b) => b.marks - a.marks)
+
+        for (let i = 0; i < students.length; i++) {
+            let list = document.createElement("li")
+            list.innerHTML = sortedStudent[i].name + "-" + sortedStudent[i].marks + "-" + sortedStudent[i].department
+
+            document.getElementById("sortArray").appendChild(list)
+        }
 
     </script>
 
