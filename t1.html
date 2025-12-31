@@ -13,6 +13,27 @@
     <h2>Students with marks &gt; 60</h2>
     <ul id="marksAbove60"></ul>
 
+    <h2>Department Count</h2>
+    <ul id="deptCount"></ul>
+
+    <h2>Student With Highest Mark</h2>
+    <p id="highMark"></p>
+
+    <h2>TO display in Table</h2>
+    <table border="1" style="width: 100; border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Marks</th>
+                <th>Department</th>
+                
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+
 
     <script>
         const students = [
@@ -40,6 +61,43 @@
                 document.getElementById("marksAbove60").appendChild(li);
             }
         }
+
+        // department count
+
+        var deptCSE = 0
+        var deptECE = 0
+        var deptMECH = 0
+        for (let i = 0; i < students.length; i++) {
+            if (students[i].department == "CSE") {
+                deptCSE++
+            }
+            else if (students[i].department == "ECE") {
+                deptECE++
+            }
+            else {
+                deptMECH++
+            }
+
+            document.getElementById("deptCount").innerHTML = "CSE : " + deptCSE + ", ECE :" + deptECE + ", MECH :" + deptMECH
+        }
+
+        //students with highest mark
+
+        var marks = 0
+        var name = null
+
+        for (let i = 0; i < students.length; i++) {
+            if (students[i].marks > marks) {
+                marks = students[i].marks
+                name = students[i].name
+            }
+        }
+
+        document.getElementById("highMark").innerHTML = "Highest Mark = " + marks + " " + name
+
+        //display in table format
+
+
 
     </script>
 
