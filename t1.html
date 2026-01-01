@@ -43,6 +43,12 @@
     <h2>Sort in Descending</h2>
     <ul id="sortArray"></ul>
 
+    <h2>TO add a new Student</h2>
+    <ul id="toAdd"></ul>
+
+    <h2>Below Average Student</h2>
+    <ul id="belowAvg"></ul>
+
 
     <script>
         const students = [
@@ -154,6 +160,38 @@
 
             document.getElementById("sortArray").appendChild(list)
         }
+
+
+        // to add a new student
+
+        var newStud = {
+            id: students.length + 1,
+            name: "Ajmal",
+            marks: 49,
+            department: "CSE",
+        }
+
+        students.push(newStud)
+
+        for (let i = 0; i < students.length; i++) {
+            let li = document.createElement("li");
+            li.innerText = students[i].name + "-" + students[i].marks + "-" + students[i].department
+            document.getElementById("toAdd").appendChild(li);
+        }
+
+        //to display below average student
+
+        for (let i = 0; i < students.length; i++) {
+            let li = document.createElement("li");
+            li.innerText = students[i].name + "-" + students[i].marks + "-" + students[i].department
+
+            if (students[i].marks < 50) {
+                li.style.color = "red"
+            }
+            document.getElementById("belowAvg").appendChild(li);
+        }
+
+
 
     </script>
 
