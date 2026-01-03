@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Promise practice</title>
+    </head>
+    <body>
+        <h2>Space X details</h2>
+        <button onclick="fetchDetails()">Load Details</button>
+
+         <div id="missionName"></div>
+
+
+        <script>
+            function fetchDetails(){
+                fetch("https://api.spacexdata.com/v4/launches/latest")
+
+                .then(function success(response){
+                    return response.json()
+                })
+                .then(function (mission){
+                    const list = document.getElementById("missionName")
+                    list.innerHTML = `
+                    <h3>${mission.name}</h3>
+                `;
+                })
+                .catch(function (error){
+                    console.log("fetching error " + error)
+                })
+            }
+        </script>
+    </body>
+</html>
